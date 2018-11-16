@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1539985350 source:c:\users\erica\documents\pds 2\tp dicio\tp\main.cpp
+	<iostream>
+	<string>
+	<vector>
+	<algorithm>
+	"dicionario.h"
+
+1539985406 c:\users\erica\documents\pds 2\tp dicio\tp\dicionario.h
+	<iostream>
+	<vector>
+	<string>
+	<algorithm>
+
+1539985997 source:c:\users\erica\documents\pds 2\tp dicio\tp\dicionario.cpp
+	"dicionario.h"
+	<fstream>
+	<iostream>
+	<string>
+	<algorithm>
+
