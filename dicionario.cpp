@@ -52,7 +52,7 @@ char Dicionario::Transforma_Caractere(char c){
     return c;
 }
 
-void Dicionario::Abrir(char *arquivo){
+void Dicionario::Abrir(char *arquivo){ //****Necessario refatorar o código****
     ifstream texto;
     texto.open(arquivo, ios::in);
     string linha;
