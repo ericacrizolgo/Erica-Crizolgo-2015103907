@@ -72,6 +72,9 @@ void Dicionario::Abrir(char *arquivo){
     //Abrindo arquivo
     arquivo_atual.open(arquivo, ios::in);
     arq_atual = arquivo;
+    if(!arquivo_atual){
+        throw 1;
+    }
 };
 
 void Dicionario::Fechar(){
@@ -157,7 +160,13 @@ void Dicionario::Imprimir(int indice){
 
 void Dicionario::Gerar_Dicionario(int quantidade_arquivos, char *argv[]){
     for(int i = 1; i < quantidade_arquivos; i++){
-        Abrir(argv[i]);
+        try{
+            Abrir(argv[i]);
+        }catch(int arquivo_nao_existe){
+            cout << "FALHA EM ABRIR ARQUIVO: " << argv[i] << endl;
+            continue;
+        }
+
         Leitura();
         Fechar();
     }

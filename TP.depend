@@ -26,13 +26,14 @@
 	<string>
 	<algorithm>
 
-1542487795 c:\users\erica\documents\github\erica-crizolgo-2015103907\dicionario.h
+1542655391 c:\users\erica\documents\github\erica-crizolgo-2015103907\dicionario.h
 	<iostream>
 	<vector>
 	<string>
 	<algorithm>
+	<fstream>
 
-1542488064 source:c:\users\erica\documents\github\erica-crizolgo-2015103907\main.cpp
+1542655218 source:c:\users\erica\documents\github\erica-crizolgo-2015103907\main.cpp
 	<iostream>
 	<string>
 	<vector>
