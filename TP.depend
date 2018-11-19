@@ -19,3 +19,23 @@
 	<string>
 	<algorithm>
 
+1542487795 source:c:\users\erica\documents\github\erica-crizolgo-2015103907\dicionario.cpp
+	"dicionario.h"
+	<fstream>
+	<iostream>
+	<string>
+	<algorithm>
+
+1542487795 c:\users\erica\documents\github\erica-crizolgo-2015103907\dicionario.h
+	<iostream>
+	<vector>
+	<string>
+	<algorithm>
+
+1542488064 source:c:\users\erica\documents\github\erica-crizolgo-2015103907\main.cpp
+	<iostream>
+	<string>
+	<vector>
+	<algorithm>
+	"dicionario.h"
+
