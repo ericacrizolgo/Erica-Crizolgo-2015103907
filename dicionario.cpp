@@ -4,12 +4,18 @@
 #include <string>
 #include <algorithm>
 
-using namespace std;
+//using namespace std;
+using std::ios;
+using std::cout;
+using std::cin;
+using std::endl;
 
+//Construtor da Classe, inicia com quantidade 0 arquivos
 Dicionario::Dicionario(){
     num_arquivos = 0;
 };
 
+//Compara as palavras
 bool compara(Palavra a,Palavra b){
     if(a.palavra < b.palavra){
         return true;
@@ -22,7 +28,7 @@ bool compara(Palavra a,Palavra b){
 int Dicionario::Busca(Palavra nova){
   int i = 0;
   for(i = 0; i < contador_palavras; i++){
-    //Se a palavra for igual, o metodo compare retorna 0
+    //Se a palavra for igual, o metodo compare retorna i
     if(!dicionario_[i].palavra.compare(nova.palavra)){
       return i;
     }
@@ -43,7 +49,7 @@ string Dicionario::Normalizar(string palavra){
     return nova_palavra;
 }
 
-//verifica se o caractere é valido
+//Verifica se o caractere é valido
 bool Dicionario::Verifica_Caractere(char c){
     if(c >= 'a' && c <= 'z'){
         return true;
@@ -57,7 +63,7 @@ bool Dicionario::Verifica_Caractere(char c){
     return false;
 }
 
-//retorna o caractere minusculo
+//Retorna o caractere minusculo
 char Dicionario::Transforma_Caractere(char c){
     char novo;
     if(c >= 'A' && c <= 'Z'){
@@ -67,23 +73,25 @@ char Dicionario::Transforma_Caractere(char c){
     return c;
 }
 
+//Utilizada para abrir os arquivos
 void Dicionario::Abrir(char *arquivo){
 
     //Abrindo arquivo
     arquivo_atual.open(arquivo, ios::in);
     arq_atual = arquivo;
     if(!arquivo_atual){
-        throw 1;
+        throw 1; // tratamento de exceção
     }
 };
 
+//Fecha o arquivo
 void Dicionario::Fechar(){
     arquivo_atual.close();
 
 }
 
+//Insere uma palava que não existe no Dicionario
 void Dicionario::Insere(Palavra nova){
-    //if(Verifica_Palavra(palavra)){
         int indice = Busca(nova);
         if(indice == -1){
             nova.lista_arquivos.push_back(arq_atual);
@@ -95,7 +103,6 @@ void Dicionario::Insere(Palavra nova){
                 dicionario_[indice].lista_arquivos.push_back(arq_atual);
             }
         }
-    //}
 }
 
 void Dicionario::Leitura(){
@@ -103,7 +110,6 @@ void Dicionario::Leitura(){
 
     //Declarando nova palavra e inserindo o arquivo no qual ela está presente
     Palavra nova;
-    //nova.lista_arquivos.push_back(arquivo);
 
     // Enquanto nao chega no fim do arquivo é feita a leitura e tratamento de linha por linha
     while(!arquivo_atual.eof()){
@@ -118,6 +124,7 @@ void Dicionario::Leitura(){
     }
 }
 
+//Recebe uma linha e quebra em palavras
 vector<string> Dicionario::Quebra_Em_Palavras(string linha){
     int inicio = 0, fim = 0;
     vector<string> resultado;
@@ -132,6 +139,7 @@ vector<string> Dicionario::Quebra_Em_Palavras(string linha){
         }
 
         palavra = linha.substr(inicio,fim - inicio);
+        //Normaliza a palavra
         palavra = Normalizar(palavra);
 
         resultado.push_back(palavra);
@@ -150,14 +158,16 @@ bool Dicionario::Verifica_Palavra(string palavra){
     return true;
 }
 
+//Imprime a lista de arquivos que contem a palavra pesquisada
 void Dicionario::Imprimir(int indice){
-    //cout << dicionario_[indice].palavra << "\t";
+
     for(int j = 0; j < (int)dicionario_[indice].lista_arquivos.size(); j++){
         cout << dicionario_[indice].lista_arquivos[j] << endl;
     }
     cout << endl;
 }
 
+//Gera um novo Dicionario e realiza o tratamento de exceção
 void Dicionario::Gerar_Dicionario(int quantidade_arquivos, char *argv[]){
     for(int i = 1; i < quantidade_arquivos; i++){
         try{
@@ -173,13 +183,14 @@ void Dicionario::Gerar_Dicionario(int quantidade_arquivos, char *argv[]){
     sort(dicionario_.begin(),dicionario_.end(),compara);
 }
 
+//Busca uma palavra no Dicionário
 void Dicionario::Consulta(string entrada){
     Palavra aux;
     aux.palavra = entrada;
     int indice = Busca(aux);
 
     if(indice == -1){
-        cout << "PALAVRA NÂO ESTA PRESENTE NO DICIONARIO" << endl;
+        cout << endl << "PALAVRA NAO ESTA PRESENTE NO DICIONARIO." << endl;
     }else{
         Imprimir(indice);
     }

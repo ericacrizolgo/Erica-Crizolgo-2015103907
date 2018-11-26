@@ -4,7 +4,10 @@
 #include <algorithm>
 #include <fstream>
 
-using namespace std;
+//using namespace std;
+using std::string;
+using std::vector;
+using std::ifstream;
 
 typedef struct _Palavra{
     string palavra;

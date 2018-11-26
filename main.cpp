@@ -4,8 +4,10 @@
 #include <algorithm>
 #include "dicionario.h"
 
-
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
+//using namespace std;
 
 int main(int argc, char *argv[]){
 
@@ -19,7 +21,7 @@ int main(int argc, char *argv[]){
     while(1){
         do{
 
-            cout << "OPÇÔES:" << endl;
+            cout << "OPCOES:" << endl;
             cout << "1.CONSULTA" << endl;
             cout << "2.SAIR" << endl;
             cin >> opt;
